@@ -58,9 +58,37 @@ git merge
 
 我们准备了两个分支，每个分支上各有一个独有的提交。这意味着没有一个分支包含了我们修改的所有内容。咱们通过合并这两个分支来解决这个问题。
 
-我们要把 `bugFix` 合并到 `master` 里
+我们要把 `bugFix` 合并到 `master` 里，其中```master```上有一个```*```表明当前是对```master```分支进行操作
 
-![]()
+![](..\pictures\git\合并1.png)
+
+使用：
+
+```shell
+git merge bugFix
+```
+
+后现在的分支变为：
+
+![](..\pictures\git\合并2.png)
 
 
 
+首先，`master` 现在指向了一个拥有两个父节点的提交记录。假如从 `master` 开始沿着箭头向上看，在到达起点的路上会经过所有的提交记录。这意味着 `master` 包含了对代码库的所有修改
+
+再把 `master` 分支合并到 `bugFix`：
+
+使用：
+
+```shell
+git checkout bugFix
+git merge master
+```
+
+现在我们的分支变为这样：
+
+![](..\pictures\git\合并3.png)
+
+因为 `master` 继承自 `bugFix`，Git 什么都不用做，只是简单地把 `bugFix` 移动到 `master` 所指向的那个提交记录。
+
+现在所有提交记录的颜色都一样了，这表明每一个分支都包含了代码库的所有修改！大功告成
