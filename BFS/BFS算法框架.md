@@ -121,6 +121,11 @@ public int maxDepth(TreeNode root) {
     int ans = 1;
     while (!queue.isEmpty()) {
         int size = queue.size();
+        /**
+        *  通过这个for循环和上面的size来控制一层的遍历是否接受
+        *  因为size是在一层节点全部加入到stack中后才获取的长度，不会因为后面offer节点而增加长度
+        *  通过队列实现，先进先出
+        */
         for (int i = 0; i < size; i++) {
             TreeNode node = queue.poll();
             if (node.left != null) {
